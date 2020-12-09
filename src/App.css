@@ -2,7 +2,25 @@
   text-align: center;
 }
 
+button {
+  margin: 15px 18px 25px 18px;
+  padding: 15px;
+}
 
+p{
+  border: solid #282c34;
+  margin: 50px auto 15px auto;
+  width: 13vw;
+  height: 5vh;
+  text-align: center;
+  padding-top: 2.5vh;
+}
+
+input{
+  width: 13vw;
+  margin: 20px;
+ 
+}
 
 .App-header {
   background-color: #282c34;

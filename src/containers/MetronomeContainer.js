@@ -1,6 +1,7 @@
 import IntervalSelector from "../components/IntervalSelector.js"
 import SoundSelector from "../components/SoundSelector.js"
 import {useState, useEffect} from 'react';
+import '../App.css';
 
 function MetronomeContainer({sounds}) {
 
@@ -15,15 +16,6 @@ function MetronomeContainer({sounds}) {
         stop();
         start();
     },[bpm])
-
-    function handleSoundChange(event){
-        stop()
-        setSound(event.target.value);
-    };
-
-    function handleIntervalChange(event){
-        setBpm(event.target.value);
-    };
 
     function playSound() {
         const snd = new Audio(sound);  
@@ -41,24 +33,35 @@ function MetronomeContainer({sounds}) {
         setIsPlaying(false);
     };
 
+    function handleSoundChange(event){
+        stop()
+        setSound(event.target.value);
+    };
+
+    function handleIntervalChange(event){
+        setBpm(event.target.value);
+    };
+
     function handleStartStop() {
        isPlaying ? stop(): start()
     };
     
     function flashText() {
         var oElem = document.getElementById('bpmColour');
-        oElem.style.color = oElem.style.color == 'red' ? 'blue' : 'red';
+        oElem.style.backgroundColor = oElem.style.backgroundColor == 'navy' ? '#ADEFD1FF' : 'navy';
+        oElem.style.color = oElem.style.color == 'silver' ? 'navy' : 'silver';
     };
 
     return(
         <>
             <p id='bpmColour'>{bpm}bpm</p>
-            <IntervalSelector handleIntervalChange={handleIntervalChange}/>
+            <div>
+            <IntervalSelector handleIntervalChange={handleIntervalChange} />
+            <br/>
+            <button onClick={handleStartStop}>{isPlaying && sound ? "Stop" : "Start"}</button>
             <br/>
             <SoundSelector sounds={sounds} handleSoundChange={handleSoundChange}/>
-            <br/>
-            
-            <button onClick={handleStartStop}>{isPlaying && sound ? "Stop" : "Start"}</button>
+            </div>
         </>
     );
     
