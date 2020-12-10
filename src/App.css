@@ -7,6 +7,9 @@ button {
   padding: 15px;
 }
 
+select {
+  margin-bottom: 40px;
+}
 p{
   border: solid #282c34;
   margin: 50px auto 15px auto;
