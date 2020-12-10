@@ -15,7 +15,7 @@ function MetronomeContainer({sounds}) {
         if (!isPlaying) return;
         stop();
         start();
-    },[bpm])
+    },[bpm, sound])
 
     function playSound() {
         const snd = new Audio(sound);  
@@ -34,7 +34,6 @@ function MetronomeContainer({sounds}) {
     };
 
     function handleSoundChange(event){
-        stop()
         setSound(event.target.value);
     };
 
@@ -47,9 +46,11 @@ function MetronomeContainer({sounds}) {
     };
     
     function flashText() {
-        var oElem = document.getElementById('bpmColour');
-        oElem.style.backgroundColor = oElem.style.backgroundColor == 'navy' ? '#ADEFD1FF' : 'navy';
-        oElem.style.color = oElem.style.color == 'silver' ? 'navy' : 'silver';
+        if (sound ) {
+            var oElem = document.getElementById('bpmColour');
+            oElem.style.backgroundColor = oElem.style.backgroundColor == 'navy' ? '#ADEFD1FF' : 'navy';
+            oElem.style.color = oElem.style.color == 'silver' ? 'navy' : 'silver';
+        }
     };
 
     return(
