@@ -2,7 +2,6 @@ import '../App.css';
 
 function SoundSelector(props) {
 
-
     return(
         <>
         <select onChange= {props.handleSoundChange}>
